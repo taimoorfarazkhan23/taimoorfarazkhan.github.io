@@ -1,0 +1,195 @@
+from pathlib import Path
+
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Taimoor Faraz Khan - Personal Student Portfolio">
+<title>Taimoor Faraz Khan | Student Portfolio</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#172033;line-height:1.65;transition:.3s}
+body.dark{background:#0d1117;color:#e6edf3}
+header{min-height:470px;padding:80px 20px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#0b2545,#174a6e,#2879a8)}
+.hero{max-width:900px;animation:up .8s ease}
+.avatar{width:145px;height:145px;border-radius:50%;object-fit:cover;border:5px solid #fff;margin-bottom:18px;background:rgba(255,255,255,.15)}
+header h1{font-size:clamp(2.4rem,7vw,4.8rem);line-height:1.1;margin-bottom:12px}
+header p{font-size:1.2rem;opacity:.95}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{border:0;text-decoration:none;cursor:pointer;padding:12px 21px;border-radius:28px;font-weight:bold;background:#fff;color:#174a6e}
+.btn.alt{background:rgba(255,255,255,.12);color:#fff;border:1px solid #fff}
+.btn:hover{transform:translateY(-2px)}
+nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 14px #00000018;display:flex;justify-content:center;flex-wrap:wrap;gap:5px;padding:10px}
+body.dark nav{background:#161b22}
+nav a{padding:8px 12px;border-radius:20px;text-decoration:none;font-weight:bold;color:#174a6e}
+body.dark nav a{color:#9bd4f5}
+nav a:hover{background:#eaf3f9}
+main{max-width:1120px;margin:35px auto;padding:0 18px}
+section{background:#fff;border-radius:20px;padding:32px;margin-bottom:25px;box-shadow:0 8px 28px #14284612}
+body.dark section{background:#161b22;box-shadow:0 8px 28px #00000030}
+h2{font-size:1.9rem;color:#174a6e;margin-bottom:20px}
+body.dark h2{color:#9bd4f5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
+.card,.stat{background:#eef6fb;border:1px solid #dce8f0;border-radius:15px;padding:21px}
+body.dark .card,body.dark .stat{background:#21262d;border-color:#30363d}
+.card h3{color:#1f5f8b;margin-bottom:8px}
+body.dark .card h3{color:#9bd4f5}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:25px}
+.stat{text-align:center}
+.stat strong{display:block;font-size:1.8rem;color:#174a6e}
+body.dark .stat strong{color:#9bd4f5}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill{padding:9px 14px;border-radius:20px;background:#e6f2fa;color:#174a6e;font-weight:bold}
+body.dark .skill{background:#263849;color:#9bd4f5}
+.timeline{border-left:4px solid #2879a8;padding-left:20px}
+.timeline .item{margin-bottom:20px}
+.timeline .item:last-child{margin-bottom:0}
+.notice{margin-top:20px;padding:16px 18px;border-left:5px solid #2879a8;background:#f1f7fb;border-radius:8px}
+body.dark .notice{background:#21262d}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.gallery div{min-height:150px;border:2px dashed #b9cad6;border-radius:15px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:#f8fbfd}
+body.dark .gallery div{background:#21262d;border-color:#46515c}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.links a{background:#174a6e;color:#fff;text-decoration:none;padding:11px 17px;border-radius:24px;font-weight:bold}
+footer{text-align:center;background:#102a43;color:#fff;padding:35px 15px}
+#top{position:fixed;right:20px;bottom:20px;width:45px;height:45px;border:0;border-radius:50%;background:#174a6e;color:#fff;font-size:20px;display:none;cursor:pointer;z-index:30}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){section{padding:22px}nav a{font-size:.88rem}header{min-height:420px}}
+</style>
+</head>
+<body>
+
+<header id="home">
+<div class="hero">
+  <img class="avatar" src="profile.jpg" alt="Taimoor Faraz Khan" onerror="this.style.display='none'">
+  <h1>Taimoor Faraz Khan</h1>
+  <p>Student • Technology Enthusiast • Science Learner</p>
+  <div class="actions">
+    <a class="btn" href="#about">Explore My Portfolio</a>
+    <button class="btn alt" onclick="toggleDark()">🌙 Dark Mode</button>
+  </div>
+</div>
+</header>
+
+<nav>
+<a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a>
+<a href="#results">Results</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a>
+<a href="#interests">Interests</a><a href="#gallery">Gallery</a><a href="#goals">Goals</a><a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+<section id="about">
+<h2>About Me</h2>
+<p>Welcome to my personal portfolio. I am Taimoor Faraz Khan, a student interested in learning, science, technology and computer skills. This website brings my educational profile, achievements, interests, skills and future goals together in one place.</p>
+<div class="stats">
+<div class="stat"><strong>10th</strong>Current Class</div>
+<div class="stat"><strong>532</strong>Marks</div>
+<div class="stat"><strong>Science</strong>Academic Focus</div>
+<div class="stat"><strong>2026</strong>Portfolio Year</div>
+</div>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<div class="timeline">
+<div class="item"><h3>The Hall Mark School And College Havelian</h3><p><strong>Current Level:</strong> Class 10th</p><p><strong>Focus:</strong> Science and Computer Studies</p></div>
+<div class="item"><h3>Academic Development</h3><p>Continuing to develop knowledge, computer skills and academic performance through regular learning and practice.</p></div>
+</div>
+</section>
+
+<section id="results">
+<h2>Academic Results</h2>
+<div class="grid">
+<div class="card"><h3>Obtained Marks</h3><p><strong>532 marks</strong></p><p>Academic achievement recorded in the portfolio.</p></div>
+<div class="card"><h3>Improvement</h3><p>Working toward further improvement in academic performance.</p></div>
+</div>
+<div class="notice">Official examination results should always be verified through the relevant examination board.</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+<span class="skill">HTML</span><span class="skill">Web Design</span><span class="skill">Computer Skills</span>
+<span class="skill">Problem Solving</span><span class="skill">Research</span><span class="skill">Learning</span>
+<span class="skill">Basic Programming</span><span class="skill">Digital Skills</span>
+</div>
+</section>
+
+<section id="achievements">
+<h2>Achievements & Certificates</h2>
+<div class="grid">
+<div class="card"><h3>Academic Achievement</h3><p>Achieved 532 marks and continuing to work toward stronger academic performance.</p></div>
+<div class="card"><h3>Certificates</h3><p>Certificate showcase area. Upload certificates to the repository and add them here when available.</p></div>
+<div class="card"><h3>School Achievements</h3><p>Add awards, competitions, projects and other school achievements here.</p></div>
+</div>
+</section>
+
+<section id="interests">
+<h2>Interests</h2>
+<div class="grid">
+<div class="card"><h3>⚛ Physics</h3><p>Exploring science, technology and the physical world.</p></div>
+<div class="card"><h3>🧪 Chemistry</h3><p>Learning about matter, reactions and scientific concepts.</p></div>
+<div class="card"><h3>💻 Computer Science</h3><p>Interested in programming, websites and modern computer technology.</p></div>
+<div class="card"><h3>📚 Learning</h3><p>Enjoy studying and developing new skills through practice.</p></div>
+</div>
+</section>
+
+<section id="gallery">
+<h2>Photo Gallery</h2>
+<div class="gallery">
+<div>📷<br>Profile Photo<br><small>Upload profile.jpg</small></div>
+<div>🏫<br>School Photo<br><small>Add your image</small></div>
+<div>🏆<br>Achievement<br><small>Add your image</small></div>
+<div>💻<br>Project<br><small>Add your image</small></div>
+</div>
+<div class="notice">To add photos, upload image files to the same GitHub repository and then replace the placeholders with image elements.</div>
+</section>
+
+<section id="goals">
+<h2>Future Goals</h2>
+<div class="grid">
+<div class="card"><h3>🎓 Education</h3><p>Continue improving academic knowledge and learning new subjects.</p></div>
+<div class="card"><h3>🔬 Science</h3><p>Build stronger skills and understanding in science and technology.</p></div>
+<div class="card"><h3>💻 Technology</h3><p>Develop practical skills in computers, programming and web development.</p></div>
+<div class="card"><h3>🚀 Career</h3><p>Use education and technology skills to build a successful future.</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact & Social Links</h2>
+<p>Only add contact information and social profiles that you want to make publicly visible.</p>
+<div class="links">
+<a href="https://github.com/taimoorfarazkhan23" target="_blank" rel="noopener">GitHub</a>
+<a href="#" onclick="return false">Instagram</a>
+<a href="#" onclick="return false">LinkedIn</a>
+<a href="#" onclick="return false">Email</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>&copy; 2026 Taimoor Faraz Khan. All rights reserved.</p>
+<p style="opacity:.8;margin-top:6px">Personal Student Portfolio</p>
+</footer>
+
+<button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleDark(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('darkMode',document.body.classList.contains('dark')?'on':'off');
+}
+if(localStorage.getItem('darkMode')==='on') document.body.classList.add('dark');
+const topBtn=document.getElementById('top');
+window.addEventListener('scroll',()=>topBtn.style.display=window.scrollY>400?'block':'none');
+</script>
+</body>
+</html>"""
+
+path=Path("/mnt/data/index.html")
+path.write_text(html,encoding="utf-8")
+print(path)
